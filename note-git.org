@@ -1,0 +1,16 @@
+* config
+** color
+   for eshell, set color.ui always
+   #+begin_src shell
+     git config --global color.ui always
+   #+end_src
+* basic commands
+#+begin_src shell
+  git init
+  git clone <url>
+  git status [-s]
+  git add <file>...
+  git commit [-m <message>]
+  git push
+  git pull
+#+end_src
