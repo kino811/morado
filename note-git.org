@@ -9,8 +9,11 @@
   git init
   git clone <url>
   git status [-s]
+  git diff [--cached]
   git add <file>...
-  git commit [-m <message>]
+  git commit [-a] [-m <message>]
   git push
   git pull
+  git rm [--cached] <file>...
+  git mv <file-from> <file-to>
 #+end_src
