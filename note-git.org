@@ -204,3 +204,18 @@
   #+begin_src shell
     git pull --rebase
   #+end_src
+* git server
+** bare repository
+   not have working directory
+
+   how to create bare repository
+   #+begin_src shell
+     git clone --bare <from-url> <to-url>
+   #+end_src
+
+   bare repository name postfix is =.git=
+
+   or new git directory
+   #+begin_src shell
+     git init --bare
+   #+end_src
