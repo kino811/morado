@@ -98,3 +98,109 @@
   #+begin_src shell
     git branch [--merged | --no-merged]
   #+end_src
+* remote branch
+  #+begin_src shell
+    git ls-remote
+    git remote show
+  #+end_src
+
+  remote tracking branch name format
+  =<remote>/<branch>=
+  e.g.
+  =origin/master=
+
+  origin remote is default remote name when =git clone=
+  master is default branch name when =git init=
+  if you want to set remote name when clone do that
+  #+begin_src shell
+    git clone -o my-remote <git-url>
+  #+end_src
+  now my-remote is remote name
+
+  #+begin_src shell
+    git fetch origin		# get data from remote of name origin
+  #+end_src
+  and if fetch other remote, maked and setted =remote-tracking-branch=
+
+  #+begin_src shell
+    git push <remote> <local-branch>:<remote-branch> # this is need when local-branch name is not same remote-branch anem
+  #+end_src
+
+  for remote https url password
+  #+begin_src shell
+    git config --global credential.helper cache
+  #+end_src
+
+  merge from remote-tracking-branch that is not edit branch
+  #+begin_src shell
+    git merge <remote>/<branch>
+  #+end_src
+
+  or branching from remote-tracking-branch to new branch
+  #+begin_src shell
+    git checkout -b <new-bransh> <remote>/<branch>
+    git checkout --track <remote>/<branch> # or same branch name used
+  #+end_src
+
+  when you want to tracking to remote branch from current branch
+  #+begin_src shell
+    git branch -u <remote>/<branch>
+  #+end_src
+
+  for show branch by tracking remote branch
+  #+begin_src shell
+    git branch -vv
+  #+end_src
+
+  when you want to check branch state by remote branch, first you must to get current info from remote
+  #+begin_src shell
+    git fetch --all; git branch -vv
+  #+end_src
+** pull
+   #+begin_src shell
+     git pull
+   #+end_src
+
+   same that
+   #+begin_src shell
+     git fetch; git merge
+   #+end_src
+
+   recomanted to use fetch and merge command each other than use pull command
+*** remove remote branch
+    #+begin_src shell
+      git push <remote> --delete <branch>
+    #+end_src
+* rebase
+  method combine one branch with other branch
+  other method is merge
+
+  #+begin_src shell
+    git checkout <branch>
+    git rebase <master-branch>
+  #+end_src
+
+  other rebase e.g.
+  #+begin_src shell
+    git rebase --onto <master> <from-branch> <to-branch> # rebase to master-branch by commits between from-branch to to-branch
+    # and to fast forward
+    git checkout <master>
+    git merge <to-branch>
+  #+end_src
+
+  or other method not need checkout
+  #+begin_src shell
+    git rebase <base-branch> <topic-branch> # rebase from topic-branch to base-branch. same as checkout topic-branch and rebase to base-branch
+    # and to do fast-forward
+    git checkout <base-branch>
+    git merge <topic-branch>
+    # now you can remove topic-branch if not need that branch any more
+    git branch -d <topic-branch>
+  #+end_src
+
+  =you must not to do rebase pushed commit to public remote.=
+
+  possible rebase when pull
+  #+begin_src shell
+    git pull --rebase
+  #+end_src
