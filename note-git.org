@@ -94,3 +94,4 @@
   #+begin_src shell
     git branch -d <branch>
   #+end_src
+* others
