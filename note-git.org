@@ -71,3 +71,26 @@
   #+end_src
 
   HEAD is reference current branch
+
+  show log by branch tree
+  #+begin_src shell
+    git log --oneline --decorate --graph --all
+  #+end_src
+
+  check out and new branch same time
+  #+begin_src shell
+    git branch <new-branch>
+    git checkout <new-branch>
+    # same next
+    git checkout -b <new-branch>
+  #+end_src
+* merge
+  #+begin_src shell
+    git checkout <main-branch>
+    git merge <other-branch> 	# merge from other-branch to current-branch(this time main-branch)
+  #+end_src
+
+  delete branch
+  #+begin_src shell
+    git branch -d <branch>
+  #+end_src
