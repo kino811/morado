@@ -17,3 +17,4 @@
   git rm [--cached] <file>...
   git mv <file-from> <file-to>
 #+end_src
+* test conflict
