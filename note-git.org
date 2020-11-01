@@ -5,15 +5,69 @@
      git config --global color.ui always
    #+end_src
 * basic commands
-#+begin_src shell
-  git init
-  git clone <url>
-  git status [-s]
-  git diff [--cached]
-  git add <file>...
-  git commit [-a] [-m <message>]
-  git push
-  git pull
-  git rm [--cached] <file>...
-  git mv <file-from> <file-to>
-#+end_src
+  #+begin_src shell
+    git init
+    git clone <url>
+    git status [-s]
+    git diff [--cached]
+    git add <file>...
+    git commit [-a] [-m <message>]
+    git push
+    git pull
+    git rm [--cached] <file>...
+    git mv <file-from> <file-to>
+    git log
+  #+end_src
+* remote
+  #+begin_src shell
+    git remote -v
+    git remote add <remote-name> <url>
+    git fetch <remote-name>
+    git push <remote> <branch>
+    git remote show <remote>
+    git remote rename <remote> <new-remote>
+    git remote remove <remote>
+  #+end_src
+* unstage
+  #+begin_src shell
+    git reset HEAD -- <file>...
+  #+end_src
+* tag
+  #+begin_src shell
+    git tag [-l | --list <tag-pattern>]
+    git show <tag>
+  #+end_src
+** annotated tag
+   #+begin_src shell
+     git tag -a <tag> -m <message> [target-checksum]
+   #+end_src
+** lightweight tag
+   #+begin_src shell
+     git tag <tag> [target-checksum]
+   #+end_src
+** send tag to remote server
+   #+begin_src shell
+     git push <remote> <tag>
+     git push <remote> --tags
+   #+end_src
+** checkout tag
+   #+begin_src shell
+     git checkout <tag> # will be detached HEAD after checkout tag
+   #+end_src
+
+   when detached HEAD state, new commit is not reach. then you must to create branch and do commit work.
+   #+begin_src shell
+     git checkout -b <branch> <tag>
+   #+end_src
+* git alias
+  #+begin_src shell
+    git config [--global] alias.<your-new-command> '<git-command> | !<external-command>'
+  #+end_src
+* branch
+  #+begin_src shell
+    git branch <branch>
+    git log --decorate 		# show log with branch
+    git checkout <branch>		# move to branch
+  #+end_src
+
+  HEAD is reference current branch
