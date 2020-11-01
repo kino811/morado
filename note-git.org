@@ -94,4 +94,7 @@
   #+begin_src shell
     git branch -d <branch>
   #+end_src
-* others
+* manage branch
+  #+begin_src shell
+    git branch [--merged | --no-merged]
+  #+end_src
